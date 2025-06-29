@@ -2,144 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Quiz Path</title>
+  <title>Not Yet</title>
   <style>
     body {
-      font-family: Arial;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'Georgia', serif;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      text-align: justify;
+      background: rgba(255, 255, 255, 0.02);
       padding: 30px;
-      background: #f5f5f5;
-    }
-
-    #quiz-container {
-      background: white;
-      padding: 20px;
       border-radius: 10px;
-      max-width: 600px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border: 1px solid #333;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
     }
-
-    .question {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .question.active {
-      display: block;
-      opacity: 1;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: black;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #message {
-      color: red;
-      margin-top: 10px;
+    .signature {
+      margin-top: 30px;
+      text-align: right;
+      font-style: italic;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-<div id="quiz-container">
-  <div class="question active" data-answer="21">
-    <p>He walks the line between youth and legacy—an age where the fire is sharp, but the story has already begun. Not too young to be naive, not too old to be forgotten.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
+  <div class="container">
+    <p>
+      Some stories aren’t meant to be found — not yet. They’re written in moments when no one is watching, buried in silence, scattered between fragments of thoughts never spoken aloud. They’re not confessions. Not cries for attention. They are maps — drawn in the dark, by someone who was just trying to understand the shape of their own mind.
+    </p>
+    <p>
+      If you found this… maybe it wasn’t meant to be hidden from you. But even so, let me say this: I never meant to pull you into my depths. Not like this. What you’ve seen here is not a trap, nor a performance. It’s a quiet corner of me — one that was never asking to be exposed, just… stored.
+    </p>
+    <p>
+      And if it feels too much, too strange, or too close — I understand. Truly. You were never meant to carry any of this. But if you chose to read… and if some part of it echoed in you, Then thank you. Not for understanding me — but for not turning away.
+    </p>
+    <p>
+      Even silence has weight, And sometimes… it’s heard only by the ones who were never supposed to hear it. So, if my silence reached you — I’m sorry.
+    </p>
+    <p>
+      I know I spent a lot of your time searching for an account, I know I won't let you see what's inside, But I’m also… thankful.
+    </p>
+    <div class="signature">I'm really sorry<br>– SL</div>
   </div>
-
-  <div class="question" data-answer="law">
-    <p>His world is built on words sharper than swords. Where others see confusion, he sees order. He doesn’t follow rules—he studies the system that created them.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
-  </div>
-
-  <div class="question" data-answer="the head of the table">
-    <p>He never needed validation. While others sought a place at the table, he built the table... and sat at its head. Not a title—an identity.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
-  </div>
-
-  <div class="question" data-answer="v">
-    <p>Not just a letter. A symbol. A blade. A legacy. It's the mark of the unseen king, carved in silence, remembered by power.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
-  </div>
-
-  <div class="question" data-answer="17">
-    <p>It wasn’t written in gold, yet it shined brighter than most. A number forged in long nights and quiet defiance—not perfection, but something stronger.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
-  </div>
-
-  <div class="question" data-answer="fc bayern munich">
-    <p>They don’t play—they dominate. Red and white fury, built like machines, driven like warlords. When they rise, it’s never by luck. It’s by fire.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
-  </div>
-
-  <div class="question" data-answer="roman reigns">
-    <p>Bloodline runs deep, but silence runs deeper. His idol speaks less, strikes hard, and carries a presence that even history doesn’t dare to interrupt.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
-  </div>
-
-  <div class="question" data-answer="wreck everyone and leave">
-    <p>On his phone, hidden in plain sight, were five words—brutal, simple, final. Not a motto. A mission.</p>
-    <input type="text">
-    <button>Next</button>
-    <div id="message"></div>
-  </div>
-
-  <div class="question" data-answer="abderrahim safou">
-    <p><strong>The Final Question:</strong><br>His name isn’t just what you call him. It’s a door. Speak it, and the weight of battles, silence, and survival echoes back at you.</p>
-    <input type="text">
-    <button>Finish</button>
-    <div id="message"></div>
-  </div>
-</div>
-
-<script>
-  const questions = document.querySelectorAll('.question');
-  questions.forEach((q, i) => {
-    const btn = q.querySelector('button');
-    btn.addEventListener('click', () => {
-      const input = q.querySelector('input').value.trim().toLowerCase();
-      const correct = q.dataset.answer.toLowerCase();
-      const message = q.querySelector('#message');
-      if (input === correct) {
-        message.innerText = '';
-        q.classList.remove('active');
-        if (i + 1 < questions.length) {
-          questions[i + 1].classList.add('active');
-        } else {
-          alert("🎉 Congratulations! You did it. Click OK to claim your reward.");
-          window.open("https://sites.google.com/view/rahiimv/accueil", "_blank");
-        }
-      } else {
-        message.innerText = '❌ Wrong answer. Try again.';
-      }
-    });
-  });
-</script>
 </body>
 </html>
